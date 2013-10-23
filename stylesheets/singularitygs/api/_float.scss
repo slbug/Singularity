@@ -35,36 +35,39 @@
     @if $end-row {
       float: $opp;
       @if index($gutter-style, split) and not $fixed-gutter {
-	#{$gutter-property}-#{$dir}: 0;
-	#{$gutter-property}-#{$opp}: $gutter-span / 2;
+        #{$gutter-property}-#{$dir}: 0;
+        #{$gutter-property}-#{$opp}: $gutter-span / 2;
       }
       @else if not $fixed-gutter {
-	#{$gutter-property}-#{$opp}: 0;
+        #{$gutter-property}-#{$opp}: 0;
       }
     }
     @else {
       float: $dir;
 
       @if $start-row {
-	@if index($gutter-style, split) and not $fixed-gutter {
-	  #{$gutter-property}-#{$dir}: $gutter-span / 2;
-	  #{$gutter-property}-#{$opp}: $gutter-span / 2;
-	}
-	@else if not $fixed-gutter {
-	  #{$gutter-property}-#{$dir}: 0;
-	  #{$gutter-property}-#{$opp}: $gutter-span;
-	}
-
+        @if index($gutter-style, split) and not $fixed-gutter {
+          #{$gutter-property}-#{$dir}: $gutter-span / 2;
+          #{$gutter-property}-#{$opp}: $gutter-span / 2;
+        }
+        @else if not $fixed-gutter {
+          #{$gutter-property}-#{$dir}: 0;
+          #{$gutter-property}-#{$opp}: $gutter-span;
+        }
+      }
+      @else {
+        #{$gutter-property}-#{$dir}: 0;
+        #{$gutter-property}-#{$opp}: $gutter-span;
       }
     }
 
     @if $fixed-gutter {
       @if index($gutter-style, split) {
-	#{$gutter-property}-#{$dir}: $gutter-span / 2;
-	#{$gutter-property}-#{$opp}: $gutter-span / 2;
+        #{$gutter-property}-#{$dir}: $gutter-span / 2;
+        #{$gutter-property}-#{$opp}: $gutter-span / 2;
       }
       @else {
-	#{$gutter-property}-#{$opp}: $gutter-span;
+        #{$gutter-property}-#{$opp}: $gutter-span;
       }
     }
   }
@@ -82,41 +85,45 @@
 
       @if $end-row {
         float: $opp;
-	@if index($gutter-style, split) and not $fixed-gutter {
-	  #{$gutter-property}-#{$dir}: 0;
-	  #{$gutter-property}-#{$opp}: $gutter-span / 2;
-	}
-	@else if not $fixed-gutter {
-	  #{$gutter-property}-#{$opp}: 0;
-	}
+        @if index($gutter-style, split) and not $fixed-gutter {
+          #{$gutter-property}-#{$dir}: 0;
+          #{$gutter-property}-#{$opp}: $gutter-span / 2;
+        }
+        @else if not $fixed-gutter {
+          #{$gutter-property}-#{$opp}: 0;
+        }
       }
       @else {
         float: $dir;
 
         @if $start-row {
-	  @if index($gutter-style, split) and not $fixed-gutter {
-	    #{$gutter-property}-#{$dir}: $gutter-span / 2;
-	    #{$gutter-property}-#{$opp}: $gutter-span / 2;
-	  }
-	  @else if not $fixed-gutter {
-	    #{$gutter-property}-#{$dir}: 0;
-	    #{$gutter-property}-#{$opp}: $gutter-span;
-	  }
-	}
+          @if index($gutter-style, split) and not $fixed-gutter {
+            #{$gutter-property}-#{$dir}: $gutter-span / 2;
+            #{$gutter-property}-#{$opp}: $gutter-span / 2;
+          }
+          @else if not $fixed-gutter {
+            #{$gutter-property}-#{$dir}: 0;
+            #{$gutter-property}-#{$opp}: $gutter-span;
+          }
+        }
+        @else {
+          #{$gutter-property}-#{$dir}: 0;
+          #{$gutter-property}-#{$opp}: $gutter-span;
+        }
       }
 
       @if $fixed-gutter {
-	@if $direction == 'rtl' {
-	  @if index($gutter-style, split) {
-	    #{$gutter-property}-#{$dir}: $gutter-span / 2;
-	    #{$gutter-property}-#{$opp}: $gutter-span / 2;
-	  }
-	  @else {
-	    #{$gutter-property}-#{$opp}: $gutter-span;
-	  }
-	}
-	@else if not index($gutter-style, split) {
-	  #{$gutter-property}-#{$opp}: $gutter-span;
+        @if $direction == 'rtl' {
+          @if index($gutter-style, split) {
+            #{$gutter-property}-#{$dir}: $gutter-span / 2;
+            #{$gutter-property}-#{$opp}: $gutter-span / 2;
+          }
+          @else {
+            #{$gutter-property}-#{$opp}: $gutter-span;
+          }
+        }
+        @else if not index($gutter-style, split) {
+          #{$gutter-property}-#{$opp}: $gutter-span;
         }
       }
     }
@@ -196,8 +203,7 @@
   // Working with an asymmetric grid, should have location provided
   @else if type-of($grid) == 'list' and $location != false {
     @include grid-span($span, $location, $grid, $gutter, 'float');
-  }
-  @else {
+  } @else {
     @warn 'Asymmetric Grids need a Location value as well as a span value in order to know where on the grid you are! Please include a location value!';
   }
 }
